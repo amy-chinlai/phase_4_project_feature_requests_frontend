@@ -21,6 +21,30 @@ function getRequests() {
     })
 };
 
+
+
+function postFetch(name, description, category) {
+    console.log(name, description, category)
+    fetch(endpoint, {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            name: name,
+            description: description,
+            category_id: category
+        })
+    })
+    .then (function(response) {
+        return response.json
+    })
+    .then (function(object) {
+        getRequests
+    })
+}
+
 const renderRequest = function(request){
     const requestMarkup = ` 
                 <div class="request">
@@ -41,5 +65,9 @@ let dateify = function(dateString){
 
 function createRequestFormHandler(e){
     e.preventDefault()
-    console.log(e)
+    const nameInput = document.querySelector("#input-name").value
+    const descriptionInput = document.querySelector("#input-description").value
+    const categoryId = parseInt(document.querySelector("#select-categories").value)
+
+    postFetch(nameInput, descriptionInput, categoryId)
 }
