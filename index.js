@@ -18,8 +18,14 @@ const renderRequest = function(request){
                 <div class="request">
                     <h2>${request.attributes.name}</h2>
                     <p>${request.attributes.description}</p>
-                    <p class="dates">Created on ${request.attributes.created_at}<p></p>
+                    <p class="dates">Created on ${dateify(request.attributes.created_at)}<p></p>
                 </div> `
 
                 document.querySelector("#requests-container").innerHTML += requestMarkup
+}
+
+
+let dateify = function(dateString){
+    let date = new Date(dateString)
+    return date.toDateString()
 }
