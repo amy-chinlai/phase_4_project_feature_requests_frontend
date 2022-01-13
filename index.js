@@ -65,10 +65,10 @@ function postFetch(name, description, category) {
 //                 document.querySelector("#requests-container").innerHTML += requestMarkup
 // }
 
-let dateify = function(dateString){
-    let date = new Date(dateString)
-    return date.toDateString()
-}
+// let dateify = function(dateString){
+//     let date = new Date(dateString)
+//     return date.toDateString()
+// }
 
 function createRequestFormHandler(e){
     e.preventDefault()
