@@ -43,8 +43,8 @@ function postFetch(name, description, category) {
         return response.json()
     })
     .then(function(object) {
-        console.log(object)
-        renderRequest(object)
+        let newRequest = new Request(object, object)
+        document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
     })
     .catch(function(error) {
         console.log(error)
