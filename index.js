@@ -37,11 +37,11 @@ function postFetch(name, description, category) {
             category_id: category
         })
     })
-    .then (function(response) {
-        return response.json
+    .then(function(response) {
+        return response.json()
     })
-    .then (function(object) {
-        getRequests
+    .then(function(object) {
+        console.log(object)
     })
 }
 
