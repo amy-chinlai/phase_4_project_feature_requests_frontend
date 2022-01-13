@@ -1,6 +1,8 @@
+const endpoint = "http://localhost:7000/api/v1/requests"
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log("The DOM has loaded");
-    fetch("http://localhost:7000/api/v1/requests")
+    fetch(endpoint)
     .then (function(response) {
         return response.json()
     })
@@ -10,3 +12,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 });
+
