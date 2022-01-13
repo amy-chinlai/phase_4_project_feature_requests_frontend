@@ -1,7 +1,11 @@
 const endpoint = "http://localhost:7000/api/v1/requests"
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     console.log("The DOM has loaded");
+    getRequests()
+});
+
+function getRequests() {
     fetch(endpoint)
     .then (function(response) {
         return response.json()
@@ -11,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             renderRequest(request)
         })
     })
-});
+};
 
 const renderRequest = function(request){
     const requestMarkup = ` 
