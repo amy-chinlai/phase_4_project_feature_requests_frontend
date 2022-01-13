@@ -3,6 +3,10 @@ const endpoint = "http://localhost:7000/api/v1/requests"
 document.addEventListener('DOMContentLoaded', () => {
     console.log("The DOM has loaded");
     getRequests()
+
+    const createRequestForm = document.querySelector("#request-form")
+
+    createRequestForm.addEventListener("submit", (e) => createRequestFormHandler(e))
 });
 
 function getRequests() {
@@ -33,4 +37,9 @@ const renderRequest = function(request){
 let dateify = function(dateString){
     let date = new Date(dateString)
     return date.toDateString()
+}
+
+function createRequestFormHandler(e){
+    e.preventDefault()
+    console.log(e)
 }
