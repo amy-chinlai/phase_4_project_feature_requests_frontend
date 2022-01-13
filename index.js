@@ -1,7 +1,6 @@
 const endpoint = "http://localhost:7000/api/v1/requests"
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("The DOM has loaded");
     getRequests()
 
     const createRequestForm = document.querySelector("#request-form")
