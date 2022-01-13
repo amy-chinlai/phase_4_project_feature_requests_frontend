@@ -16,7 +16,7 @@ function getRequests() {
     })
     .then(requests => {
         requests.data.forEach(request => {
-            renderRequest(request)
+            renderRequest(request.attributes)
         })
     })
 };
@@ -42,15 +42,16 @@ function postFetch(name, description, category) {
     })
     .then(function(object) {
         console.log(object)
+        renderRequest(object)
     })
 }
 
 const renderRequest = function(request){
     const requestMarkup = ` 
                 <div class="request">
-                    <h2>${request.attributes.name}</h2>
-                    <p>${request.attributes.description}</p>
-                    <p class="dates">Created on ${dateify(request.attributes.created_at)}<p></p>
+                    <h2>${request.name}</h2>
+                    <p>${request.description}</p>
+                    <p class="dates">Created on ${dateify(request.created_at)}<p></p>
                 </div> `
 
                 document.querySelector("#requests-container").innerHTML += requestMarkup
