@@ -11,17 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const requestMarkup = ` 
                 <div class="request">
                     <h2>${request.attributes.name}</h2>
+                    <p>${request.attributes.description}</p>
+                    <p class="dates">Created on ${request.attributes.created_at}<p></p>
                 </div> `
 
                 document.querySelector("#requests-container").innerHTML += requestMarkup
         })
     })
 });
-
-// function appendRequest(e) {
-//     console.log("appending")
-//     // var h1 = document.createElement('h1')
-//     // h1.classList.add('request')
-//     // h1.innerHTML = `${e.name}`
-//     // document.appendChild(h1)
-// }
