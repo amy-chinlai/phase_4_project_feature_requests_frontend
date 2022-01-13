@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     createRequestForm.addEventListener("submit", (e) => createRequestFormHandler(e))
 });
 
+// CRUD functions
+
 function getRequests() {
     fetch(endpoint)
     .then (function(response) {
@@ -19,6 +21,9 @@ function getRequests() {
             renderRequest(request.attributes)
         })
     })
+    .catch(function(error) {
+        console.log(error)
+      })
 };
 
 
@@ -46,18 +51,19 @@ function postFetch(name, description, category) {
     })
 }
 
+
+// helper functions
+
 const renderRequest = function(request){
     const requestMarkup = ` 
                 <div class="request">
-                    <h2>${request.name}</h2>
+                    <h2>${request.category.name}: ${request.name}</h2>
                     <p>${request.description}</p>
                     <p class="dates">Created on ${dateify(request.created_at)}<p></p>
                 </div> `
 
                 document.querySelector("#requests-container").innerHTML += requestMarkup
 }
-
-// helper functions
 
 let dateify = function(dateString){
     let date = new Date(dateString)
