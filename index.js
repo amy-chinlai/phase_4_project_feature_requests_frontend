@@ -1,7 +1,6 @@
 const endpoint = "http://localhost:7000/api/v1/requests"
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("The DOM has loaded");
     getRequests()
 
     const createRequestForm = document.querySelector("#request-form")
@@ -18,7 +17,8 @@ function getRequests() {
     })
     .then(requests => {
         requests.data.forEach(request => {
-            renderRequest(request.attributes)
+            let newRequest = new Request(request, request.attributes)
+            document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
         })
     })
 };
@@ -43,8 +43,8 @@ function postFetch(name, description, category) {
         return response.json()
     })
     .then(function(object) {
-        console.log(object)
-        renderRequest(object)
+        let newRequest = new Request(object, object)
+        document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
     })
     .catch(function(error) {
         console.log(error)
@@ -53,22 +53,6 @@ function postFetch(name, description, category) {
 
 
 // helper functions
-
-const renderRequest = function(request){
-    const requestMarkup = ` 
-                <div class="request">
-                    <h2>${request.category.name}: ${request.name}</h2>
-                    <p>${request.description}</p>
-                    <p class="dates">Created on ${dateify(request.created_at)}<p></p>
-                </div> `
-
-                document.querySelector("#requests-container").innerHTML += requestMarkup
-}
-
-let dateify = function(dateString){
-    let date = new Date(dateString)
-    return date.toDateString()
-}
 
 function createRequestFormHandler(e){
     e.preventDefault()
