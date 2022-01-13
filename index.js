@@ -54,22 +54,6 @@ function postFetch(name, description, category) {
 
 // helper functions
 
-// const renderRequest = function(request){
-//     const requestMarkup = ` 
-//                 <div class="request">
-//                     <h2>${request.category.name}: ${request.name}</h2>
-//                     <p>${request.description}</p>
-//                     <p class="dates">Created on ${dateify(request.created_at)}<p></p>
-//                 </div> `
-
-//                 document.querySelector("#requests-container").innerHTML += requestMarkup
-// }
-
-// let dateify = function(dateString){
-//     let date = new Date(dateString)
-//     return date.toDateString()
-// }
-
 function createRequestFormHandler(e){
     e.preventDefault()
     const nameInput = document.querySelector("#input-name").value
