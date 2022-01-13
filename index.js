@@ -21,9 +21,6 @@ function getRequests() {
             renderRequest(request.attributes)
         })
     })
-    .catch(function(error) {
-        console.log(error)
-      })
 };
 
 
@@ -49,6 +46,9 @@ function postFetch(name, description, category) {
         console.log(object)
         renderRequest(object)
     })
+    .catch(function(error) {
+        console.log(error)
+      })
 }
 
 
