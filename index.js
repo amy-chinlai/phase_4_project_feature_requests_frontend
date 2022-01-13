@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(requests => {
         requests.data.forEach(request => {
-            const requestMarkup = ` 
+            renderRequest(request)
+        })
+    })
+});
+
+const renderRequest = function(request){
+    const requestMarkup = ` 
                 <div class="request">
                     <h2>${request.attributes.name}</h2>
                     <p>${request.attributes.description}</p>
@@ -16,6 +22,4 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div> `
 
                 document.querySelector("#requests-container").innerHTML += requestMarkup
-        })
-    })
-});
+}
