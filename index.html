@@ -12,6 +12,32 @@
 
 <body>
 
+    <div id="form-container">
+        <form id="request-form">
+            <h2>Create New Feature Request</h2>
+
+            <label for="input-name">Name:</label><br>
+            <input id="input-name" name="name" type="text" value=""><br><br>
+
+            <label for"input-description">Description:</label><br>
+            <textarea id="input-description" name="description" rows="8" cols="80"></textarea><br><br>
+
+            <label for "category-name">Category:</label>
+            <select id="select-categories" name="categories">
+                <option value="" disabled selected>Select Category</option>
+                <option value="1">Letter Campaigns</option>
+                <option value="2">User Interface</option>
+                <option value="3">Petitions</option>
+                <option value="4">Emails</option>
+                <option value="5">Mobile Messages</option>
+            </select>
+            <br>
+            <br>
+
+            <input id="create-button" type="submit" value"Create New Request">
+        </form>
+    </div>
+    
     <div id="requests-container">
 
 

@@ -24,6 +24,7 @@ const renderRequest = function(request){
                 document.querySelector("#requests-container").innerHTML += requestMarkup
 }
 
+// helper functions
 
 let dateify = function(dateString){
     let date = new Date(dateString)
