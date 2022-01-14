@@ -14,7 +14,7 @@ class Request {
                     <div class="request" data-id=${this.id}>
                         <h2>${this.category.name}: ${this.name}</h2>
                         <p>${this.description}</p>
-                        <p>${this.vote}</p>
+                        <p>${this.vote} ${this.renderVote()}</p>
                         <p class="dates">Created on ${this.dateify()}<p></p>
                     </div> `
     
@@ -23,6 +23,15 @@ class Request {
     dateify() {
         let date = new Date(this.created_at)
         return date.toDateString()
+    }
+
+    renderVote() {
+        let vote = this.vote
+        if (vote === 1) {
+            console.log("vote = 1")
+        } else if (vote === -1) {
+            console.log("vote = -1")
+        }
     }
 } // ends class
 
