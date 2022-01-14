@@ -5,6 +5,7 @@ class Request {
         this.description = requestAttributes.description
         this.category = requestAttributes.category
         this.created_at = requestAttributes.created_at
+        this.vote = requestAttributes.vote
         Request.all.push(this)
     }
 
@@ -13,6 +14,7 @@ class Request {
                     <div class="request" data-id=${this.id}>
                         <h2>${this.category.name}: ${this.name}</h2>
                         <p>${this.description}</p>
+                        <p>${this.vote}</p>
                         <p class="dates">Created on ${this.dateify()}<p></p>
                     </div> `
     
