@@ -29,6 +29,7 @@ class Request {
         let vote = this.vote
         if (vote === 1) {
             console.log("vote = 1")
+            return '<i class="fas fa-thumbs-up"></i>'
         } else if (vote === -1) {
             console.log("vote = -1")
         }
