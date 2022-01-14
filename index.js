@@ -14,15 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
         selectCategory(e)
     })
 
-    window.setTimeout(() => {
+    window.setTimeout(() => { // need this to be rendered with renderRequest/get
         const hearts = document.querySelectorAll(".fa-heart")
         hearts.forEach(heart => { 
-            heart.addEventListener('click', e => {
-            console.log("hearted")
-            console.log(e.target.dataset.id)
-            console.log(e.target.dataset)
-            patchVote(e.target.dataset)
-            })
+            // heart.addEventListener('click', e => {
+            //     // debugger
+            // // e.preventDefault()
+            // console.log("hearted")
+            // console.log(e.target.dataset.id)
+            // console.log(e.target.dataset)
+            // patchVote(e.target.dataset)
+            // })
         })
     }, 1000)
 
@@ -41,6 +43,17 @@ function getRequests() {
         requests.data.forEach(request => {
             let newRequest = new Request(request, request.attributes)
             document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
+        })
+        const hearts = document.querySelectorAll(".fa-heart")
+        hearts.forEach(heart => { 
+            heart.addEventListener('click', e => {
+            // debugger
+            // e.preventDefault()
+            console.log("hearted")
+            console.log(e.target.dataset.id)
+            console.log(e.target.dataset)
+            patchVote(e.target.dataset)
+            })
         })
     })
 };
@@ -76,7 +89,10 @@ function postFetch(name, description, category) {
 function patchVote(request) {
     console.log("hit patch")
     console.log(request.value)
-    console.log(!request.value)
+    console.log(!!request.value) // why is this not flipping from false to true, but is from true to false?
+    let submitValue = !request.value
+    // debugger
+    console.log(submitValue)
     fetch(endpoint + `/${request.id}`, {
         method: "PATCH",
         headers: {
@@ -84,14 +100,14 @@ function patchVote(request) {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            vote: !request.value
+            vote: submitValue
         })
     }).then(function(response) {
         return response.json()
     })
     .then(function(object) {
         document.querySelector("#requests-container").innerHTML = ""
-        getRequests()
+        getRequests() // better way than blanking out the innherHTML? also how to do the heart multiple times without refreshing
     })
 }
 
