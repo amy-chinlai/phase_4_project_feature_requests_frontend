@@ -13,15 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dropdown.addEventListener('change', function(e){
         console.log("changed")
+        selectCategory(e)
     })
 });
-
-// function selectCategoryListener() {
-//     let dropdown = document.querySelector("#category-dropdown")
-//     dropdown.addEventListener('change', function(e) {
-//         console.log("changed")
-//     })
-// }
 
 // CRUD functions
 
@@ -79,6 +73,6 @@ function createRequestFormHandler(e){
 }
 
 function selectCategory(e) {
-    console.log(e)
-    Request.all.filter(request => request.category.name === e)
+    console.log(e.target.value)
+    Request.all.filter(request => request.category.id === e.target.value)
 }
