@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         hearts.forEach(heart => { 
             heart.addEventListener('click', e => {
             console.log("hearted")
+            console.log(e.target.dataset)
+            patchVote()
             })
         })
     }, 1000)
@@ -38,7 +40,6 @@ function getRequests() {
         requests.data.forEach(request => {
             let newRequest = new Request(request, request.attributes)
             document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
-            // newRequest.heartListener()
         })
     })
 };
@@ -69,6 +70,10 @@ function postFetch(name, description, category) {
     .catch(function(error) {
         console.log(error)
       })
+}
+
+function patchVote() {
+
 }
 
 
