@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <script type="text/javascript" src="src/request.js"></script>
+    <script type="text/javascript" src="src/category.js"></script>
     <script type="text/javascript" src="index.js"></script>
    
 
@@ -13,6 +14,18 @@
 </head>
 
 <body>
+    <div id="#filter-container">
+        <label for="select-category">Select Category:</label>
+        <select id="category-dropdown" name="select-category">
+            <option value="" disabled selected>Select Category</option>
+            <option value="1">Letter Campaigns</option>
+            <option value="2">User Interface</option>
+            <option value="3">Petitions</option>
+            <option value="4">Emails</option>
+            <option value="5">Mobile Messages</option>
+            <option value="6">won't work</option>
+        </select>
+    </div>
 
     <div id="form-container">
         <form id="request-form">

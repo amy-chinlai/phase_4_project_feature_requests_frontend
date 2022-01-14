@@ -1,12 +1,27 @@
 const endpoint = "http://localhost:7000/api/v1/requests"
 
+// listeners
+
 document.addEventListener('DOMContentLoaded', () => {
     getRequests()
 
     const createRequestForm = document.querySelector("#request-form")
 
     createRequestForm.addEventListener("submit", (e) => createRequestFormHandler(e))
+
+    const dropdown = document.querySelector("#category-dropdown")
+
+    dropdown.addEventListener('change', function(e){
+        console.log("changed")
+    })
 });
+
+// function selectCategoryListener() {
+//     let dropdown = document.querySelector("#category-dropdown")
+//     dropdown.addEventListener('change', function(e) {
+//         console.log("changed")
+//     })
+// }
 
 // CRUD functions
 
@@ -61,4 +76,9 @@ function createRequestFormHandler(e){
     const categoryId = parseInt(document.querySelector("#select-categories").value)
 
     postFetch(nameInput, descriptionInput, categoryId)
+}
+
+function selectCategory(e) {
+    console.log(e)
+    Request.all.filter(request => request.category.name === e)
 }
