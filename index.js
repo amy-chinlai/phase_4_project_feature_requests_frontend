@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         hearts.forEach(heart => { 
             heart.addEventListener('click', e => {
             console.log("hearted")
-            console.log(e.target.dataset)
-            patchVote()
+            console.log(e.target.dataset.id)
+            patchVote(e.target.dataset.id)
             })
         })
     }, 1000)
@@ -72,8 +72,24 @@ function postFetch(name, description, category) {
       })
 }
 
-function patchVote() {
-
+function patchVote(requestId) {
+    console.log("hit patch")
+    fetch(endpoint + `/${requestId}`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            vote: 1
+        })
+    }).then(function(response) {
+        return response.json()
+    })
+    .then(function(object) {
+        document.querySelector("#requests-container").innerHTML = ""
+        getRequests()
+    })
 }
 
 
