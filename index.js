@@ -79,8 +79,8 @@ function selectCategory(e) {
     console.log(filteredRequests)
     document.querySelector("#requests-container").innerHTML = ""
 
-    // requests.data.forEach(request => {
-    //     let newRequest = new Request(request, request.attributes)
-    //     document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
-    // })
+    filteredRequests.forEach(request => {
+        let newRequest = new Request(request, request)
+        document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
+    })
 }
