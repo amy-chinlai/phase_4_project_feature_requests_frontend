@@ -12,9 +12,8 @@ class Request {
     renderRequest() {
         return ` 
                     <div class="request" data-id=${this.id}>
-                        <h2>${this.category.name}: ${this.name}</h2>
+                        <h2>${this.category.name}: ${this.name} ${this.renderVote()}</h2>
                         <p>${this.description}</p>
-                        <p>${this.vote} ${this.renderVote()}</p>
                         <p class="dates">Created on ${this.dateify()}<p></p>
                     </div> `
     
@@ -28,10 +27,9 @@ class Request {
     renderVote() {
         let vote = this.vote
         if (vote === 1) {
-            console.log("vote = 1")
-            return '<i class="fas fa-thumbs-up"></i>'
-        } else if (vote === -1) {
-            console.log("vote = -1")
+            return '<i class="fas fa-heart"></i>'
+        } else {
+            return '<i class="far fa-heart"></i>'
         }
     }
 } // ends class
