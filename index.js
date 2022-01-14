@@ -77,6 +77,8 @@ function selectCategory(e) {
     let filteredRequests = Request.all.filter(request => request.category.id === parseInt(e.target.value))
     console.log(Request.all)
     console.log(filteredRequests)
+    document.querySelector("#requests-container").innerHTML = ""
+
     // requests.data.forEach(request => {
     //     let newRequest = new Request(request, request.attributes)
     //     document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
