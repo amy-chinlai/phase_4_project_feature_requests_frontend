@@ -74,5 +74,11 @@ function createRequestFormHandler(e){
 
 function selectCategory(e) {
     console.log(e.target.value)
-    Request.all.filter(request => request.category.id === e.target.value)
+    let filteredRequests = Request.all.filter(request => request.category.id === parseInt(e.target.value))
+    console.log(Request.all)
+    console.log(filteredRequests)
+    // requests.data.forEach(request => {
+    //     let newRequest = new Request(request, request.attributes)
+    //     document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
+    // })
 }
