@@ -11,7 +11,7 @@ class Request {
 
     renderRequest() {
         return ` 
-                    <div class="request" data-id=${this.id}>
+                    <div class="request" data-id=${this.id} id="request_${this.id}">
                         <h2>${this.category.name}: ${this.name} ${this.renderVote()}</h2>
                         <p>${this.description}</p>
                         <p class="dates">Created on ${this.dateify()}<p></p>
@@ -31,14 +31,15 @@ class Request {
         } else {
             return `<i class="far fa-heart" data-id="${this.id}"></i>`
         }
-        heartListener()
     }
 
     heartListener() {
         console.log("heartlistener")
-        const heart = document.querySelector("i.fa-heart")
+        console.log(this.id)
+        const heart = document.querySelector(`div#request_${this.id} .fa-heart`)
+        console.log(heart)
         heart.addEventListener('click', function(event){
-        console.log("hearted")
+            console.log("hearted")
         })
     } 
 
