@@ -14,7 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
         selectCategory(e)
     })
 
+    window.setTimeout(() => {
+        const hearts = document.querySelectorAll(".fa-heart")
+        hearts.forEach(heart => { 
+            heart.addEventListener('click', e => {
+            console.log("hearted")
+            })
+        })
+    }, 1000)
+
 });
+
+
 
 // CRUD functions
 
@@ -27,7 +38,7 @@ function getRequests() {
         requests.data.forEach(request => {
             let newRequest = new Request(request, request.attributes)
             document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
-            newRequest.heartListener()
+            // newRequest.heartListener()
         })
     })
 };
