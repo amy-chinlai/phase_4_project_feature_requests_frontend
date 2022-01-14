@@ -27,11 +27,21 @@ class Request {
     renderVote() {
         let vote = this.vote
         if (vote === 1) {
-            return '<i class="fas fa-heart"></i>'
+            return `<i class="fas fa-heart" data-id="${this.id}"></i>`
         } else {
-            return '<i class="far fa-heart"></i>'
+            return `<i class="far fa-heart" data-id="${this.id}"></i>`
         }
+        heartListener()
     }
+
+    heartListener() {
+        console.log("heartlistener")
+        const heart = document.querySelector("i.fa-heart")
+        heart.addEventListener('click', function(event){
+        console.log("hearted")
+        })
+    } 
+
 } // ends class
 
 Request.all = []

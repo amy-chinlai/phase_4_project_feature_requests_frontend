@@ -6,15 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     getRequests()
 
     const createRequestForm = document.querySelector("#request-form")
-
     createRequestForm.addEventListener("submit", (e) => createRequestFormHandler(e))
 
     const dropdown = document.querySelector("#category-dropdown")
-
     dropdown.addEventListener('change', function(e){
         console.log("changed")
         selectCategory(e)
     })
+
 });
 
 // CRUD functions
@@ -28,6 +27,7 @@ function getRequests() {
         requests.data.forEach(request => {
             let newRequest = new Request(request, request.attributes)
             document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
+            newRequest.heartListener()
         })
     })
 };
