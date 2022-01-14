@@ -26,10 +26,10 @@ class Request {
 
     renderVote() {
         let vote = this.vote
-        if (vote === 1) {
-            return `<i class="fas fa-heart" data-id="${this.id}" value="1"></i>`
+        if (vote === true) {
+            return `<i class="fas fa-heart" data-id="${this.id}" data-value="true"></i>`
         } else {
-            return `<i class="far fa-heart" data-id="${this.id}" value="0"></i>`
+            return `<i class="far fa-heart" data-id="${this.id}" data-value="false"></i>`
         }
     }
 

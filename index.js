@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heart.addEventListener('click', e => {
             console.log("hearted")
             console.log(e.target.dataset.id)
+            console.log(e.target.dataset)
             patchVote(e.target.dataset)
             })
         })
@@ -74,14 +75,8 @@ function postFetch(name, description, category) {
 
 function patchVote(request) {
     console.log("hit patch")
-    if (request.value === "1") {
-        console.log("hit the 1")
-        let newVoteVal = "-1"
-    }
-    else {
-        console.log("hit the else")
-        let newVoteVal = "1"
-    }
+    console.log(request.value)
+    console.log(!request.value)
     fetch(endpoint + `/${request.id}`, {
         method: "PATCH",
         headers: {
@@ -89,7 +84,7 @@ function patchVote(request) {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            vote: newVoteVal
+            vote: !request.value
         })
     }).then(function(response) {
         return response.json()
