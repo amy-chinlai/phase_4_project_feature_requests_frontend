@@ -75,8 +75,7 @@ function createRequestFormHandler(e){
 function selectCategory(e) {
     console.log(e.target.value)
     let filteredRequests = Request.all.filter(request => request.category.id === parseInt(e.target.value))
-    console.log(Request.all)
-    console.log(filteredRequests)
+
     document.querySelector("#requests-container").innerHTML = ""
 
     filteredRequests.forEach(request => {
