@@ -10,7 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dropdown = document.querySelector("#category-dropdown")
     dropdown.addEventListener('change', function(e){
-        selectCategory(e)
+        if (e.target.value === "0") {
+            getRequests()
+        } else {
+            selectCategory(e)
+        }
         addHeartListener()
     })
 
