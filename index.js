@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector("#category-dropdown")
     dropdown.addEventListener('change', function(e){
         if (e.target.value === "0") {
+            document.querySelector("#requests-container").innerHTML = ""
             getRequests()
         } else {
             selectCategory(e)
@@ -115,10 +116,22 @@ function createRequestFormHandler(e){
 
 function selectCategory(e) {
     let filteredRequests = Request.all.filter(request => request.category.id === parseInt(e.target.value))
+    console.log(filteredRequests)
+
+    const uniqueRequests = []
+    const map = new Map()
+    for (const request of filteredRequests) {
+        if (!map.has(request.id)){
+            console.log(request.id)
+            map.set(request.id, true)
+            uniqueRequests.push(request)
+        }
+    }
+    console.log(uniqueRequests)
 
     document.querySelector("#requests-container").innerHTML = ""
 
-    filteredRequests.forEach(request => {
+    uniqueRequests.forEach(request => {
         document.querySelector("#requests-container").innerHTML += request.renderRequest()
     })
 }
