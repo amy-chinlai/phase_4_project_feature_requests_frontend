@@ -14,22 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
         selectCategory(e)
     })
 
-    window.setTimeout(() => { // need this to be rendered with renderRequest/get
-        const hearts = document.querySelectorAll(".fa-heart")
-        hearts.forEach(heart => { 
-            // heart.addEventListener('click', e => {
-            //     // debugger
-            // // e.preventDefault()
-            // console.log("hearted")
-            // console.log(e.target.dataset.id)
-            // console.log(e.target.dataset)
-            // patchVote(e.target.dataset)
-            // })
-        })
-    }, 1000)
-
 });
 
+function addHeartListener() {
+    console.log("hit heart listener")
+    const hearts = document.querySelectorAll(".fa-heart")
+        hearts.forEach(heart => { 
+            heart.addEventListener('click', e => {
+            patchVote(e.target.dataset)
+            })
+        })
+}
 
 
 // CRUD functions
@@ -43,12 +38,7 @@ function getRequests() {
         requests.data.forEach(request => {
             let newRequest = new Request(request, request.attributes)
             document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
-        })
-        const hearts = document.querySelectorAll(".fa-heart")
-        hearts.forEach(heart => { 
-            heart.addEventListener('click', e => {
-            patchVote(e.target.dataset)
-            })
+            addHeartListener()
         })
     })
 };
@@ -75,6 +65,7 @@ function postFetch(name, description, category) {
     .then(function(object) {
         let newRequest = new Request(object, object)
         document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
+        addHeartListener()
     })
     .catch(function(error) {
         console.log(error)
@@ -105,7 +96,8 @@ function patchVote(request) {
         // let editedRequest = new Request(object, object)
         // document.querySelector('#requests-container').insertAdjacentHTML("beforeend", editedRequest.renderRequest())
         document.querySelector("#requests-container").innerHTML = ""
-        getRequests() // better way than blanking out the innherHTML? also how to do the heart multiple times without refreshing
+        getRequests()
+        addHeartListener() // better way than blanking out the innherHTML? also how to do the heart multiple times without refreshing
     })
 }
 
