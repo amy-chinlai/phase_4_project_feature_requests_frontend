@@ -87,12 +87,12 @@ function postFetch(name, description, category) {
 }
 
 function patchVote(request) {
-    console.log("hit patch")
-    console.log(request.value)
-    console.log(!!request.value) // why is this not flipping from false to true, but is from true to false?
-    let submitValue = !request.value
-    // debugger
-    console.log(submitValue)
+    let submitValue 
+    if (request.value == "true") {
+        submitValue = "false"
+    } else {
+        submitValue = "true"
+    }
     fetch(endpoint + `/${request.id}`, {
         method: "PATCH",
         headers: {
