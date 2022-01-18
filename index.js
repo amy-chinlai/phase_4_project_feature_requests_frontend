@@ -10,14 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dropdown = document.querySelector("#category-dropdown")
     dropdown.addEventListener('change', function(e){
-        console.log("changed")
         selectCategory(e)
+        addHeartListener()
     })
 
 });
 
 function addHeartListener() {
-    console.log("hit heart listener")
     const hearts = document.querySelectorAll(".fa-heart")
         hearts.forEach(heart => { 
             heart.addEventListener('click', e => {
@@ -92,12 +91,9 @@ function patchVote(request) {
         return response.json()
     })
     .then(function(object) {
-        console.log(object)
-        // let editedRequest = new Request(object, object)
-        // document.querySelector('#requests-container').insertAdjacentHTML("beforeend", editedRequest.renderRequest())
         document.querySelector("#requests-container").innerHTML = ""
         getRequests()
-        addHeartListener() // better way than blanking out the innherHTML? also how to do the heart multiple times without refreshing
+        addHeartListener()
     })
 }
 
@@ -114,13 +110,11 @@ function createRequestFormHandler(e){
 }
 
 function selectCategory(e) {
-    console.log(e.target.value)
     let filteredRequests = Request.all.filter(request => request.category.id === parseInt(e.target.value))
 
     document.querySelector("#requests-container").innerHTML = ""
 
     filteredRequests.forEach(request => {
-        let newRequest = new Request(request, request)
-        document.querySelector("#requests-container").innerHTML += newRequest.renderRequest()
+        document.querySelector("#requests-container").innerHTML += request.renderRequest()
     })
 }
