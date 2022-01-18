@@ -102,10 +102,10 @@ function patchVote(request) {
     })
     .then(function(object) {
         console.log(object)
-        let editedRequest = new Request(object, object)
-        document.querySelector('#requests-container').insertAdjacentHTML("beforeend", editedRequest.renderRequest())
-        // document.querySelector("#requests-container").innerHTML = ""
-        // getRequests() // better way than blanking out the innherHTML? also how to do the heart multiple times without refreshing
+        // let editedRequest = new Request(object, object)
+        // document.querySelector('#requests-container').insertAdjacentHTML("beforeend", editedRequest.renderRequest())
+        document.querySelector("#requests-container").innerHTML = ""
+        getRequests() // better way than blanking out the innherHTML? also how to do the heart multiple times without refreshing
     })
 }
 
