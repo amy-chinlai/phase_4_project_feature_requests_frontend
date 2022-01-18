@@ -4,6 +4,9 @@
 
 This Ruby on Rails and Javascript project provides a web app to submit feature requests, favorite feature requests, and categorize feature requests. This is meant for use for product managers implementing a cooperative development model.
 
+This project works with the backend repo, availble here: https://github.com/amy-chinlai/phase_4_project_feature_requests_api
+
+
 
 ## Installation
 
@@ -15,10 +18,10 @@ Run `rake db:migrate`.
 
 Run `rake db:seed`.
 
+Run `rails s p -7000`.
+
 
 ## Usage
-
-Run `rails s p -7000`.
 
 Go to https://github.com/amy-chinlai/phase_4_project_feature_requests_frontend and clone the repository to your local machine.
 
