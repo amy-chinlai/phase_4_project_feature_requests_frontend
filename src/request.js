@@ -10,6 +10,7 @@ class Request {
     }
 
     renderRequest() {
+        console.log(this)
         return ` 
                     <div class="request" data-id=${this.id} id="request_${this.id}">
                         <h2>${this.category.name}: ${this.name} ${this.renderVote()}</h2>
