@@ -47,11 +47,6 @@ function getRequests() {
         const hearts = document.querySelectorAll(".fa-heart")
         hearts.forEach(heart => { 
             heart.addEventListener('click', e => {
-            // debugger
-            // e.preventDefault()
-            console.log("hearted")
-            console.log(e.target.dataset.id)
-            console.log(e.target.dataset)
             patchVote(e.target.dataset)
             })
         })
